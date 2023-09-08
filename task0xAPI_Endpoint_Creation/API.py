@@ -12,9 +12,13 @@ def info_api():
     track = request.args.get('track')
     current_day = datetime.datetime.utcnow().strftime('%A') # Give day in full
     utc_time = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ') # Gives time in UTC format
+    request_time_str = request.args.get('HTTP_DATE')
+    request_time = datetime.datetime.strptime(request_time_str, '%A, %d %b %Y %H:%M:%S %Z')
+
     # To calculate the time difference between the current UTC time and the request time
-    request_time = datetime.datetime.strptime(request.headers['Date'], '%a, %d %b %Y %H:%M:%S %Z')
-    time_difference = datetime.datetime.utcnow() - request_time
+    current_time = datetime.datetime.utcnow()
+    time_difference = current_time - request_time
+
 
     if abs(time_difference.total_seconds()) > 120:
         return jsonify({"status": "error", "message": "Invalid UTC time"}), 400
@@ -30,6 +34,8 @@ def info_api():
     "status_code": 200
     }
 
+    # Returns the response in JSON format
+    return jsonify(response_data)
 
 
 
