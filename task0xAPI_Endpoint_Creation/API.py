@@ -13,6 +13,7 @@ def info_api():
     current_day = datetime.datetime.utcnow().strftime('%A') # Give day in full
     utc_time = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ') # Gives time in UTC format
     request_time_str = request.args.get('HTTP_DATE')
+    print(f"Received HTTP_DATE: {request_time_str}")
     request_time = datetime.datetime.strptime(request_time_str, '%A, %d %b %Y %H:%M:%S %Z')
 
     # To calculate the time difference between the current UTC time and the request time
