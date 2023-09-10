@@ -1,0 +1,4 @@
+services:
+  - name: api
+    env: python
+    startCommand: python API.py
