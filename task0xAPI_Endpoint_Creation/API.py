@@ -25,7 +25,7 @@ def info_api():
     if abs(time_difference.total_seconds()) > 120:
         return jsonify({"status": 400, "message": "Invalid UTC time"}), 400
     
-    # JSON Response
+    # Manually construct the response with the desired key order
     response_data = {
         "slack_name": slack_name,
         "current_day": current_day,
@@ -35,20 +35,17 @@ def info_api():
         "github_repo_url": "https://github.com/MbuviM/HNG-Internship-Backend-Development",
         "status_code": 200
     }
-    
-    # Define the desired order of keys
-    keys_order = [
-        "slack_name",
-        "current_day",
-        "utc_time",
-        "track",
-        "github_file_url",
-        "github_repo_url",
-        "status_code"
-    ]
 
-    # Rearrange the dictionary according to the desired order
-    response_data = {key: response_data[key] for key in keys_order}
+    # Arrange the dictionary in the desired order
+    response_data = {
+        "slack_name": response_data["slack_name"],
+        "current_day": response_data["current_day"],
+        "utc_time": response_data["utc_time"],
+        "track": response_data["track"],
+        "github_file_url": response_data["github_file_url"],
+        "github_repo_url": response_data["github_repo_url"],
+        "status_code": response_data["status_code"]
+    }
 
     # Returns the response in JSON format
     return jsonify(response_data)
