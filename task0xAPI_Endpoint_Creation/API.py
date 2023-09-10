@@ -36,6 +36,20 @@ def info_api():
         "status_code": 200
     }
     
+    # Define the desired order of keys
+    keys_order = [
+        "slack_name",
+        "current_day",
+        "utc_time",
+        "track",
+        "github_file_url",
+        "github_repo_url",
+        "status_code"
+    ]
+
+    # Rearrange the dictionary according to the desired order
+    response_data = {key: response_data[key] for key in keys_order}
+
     # Returns the response in JSON format
     return jsonify(response_data)
 
