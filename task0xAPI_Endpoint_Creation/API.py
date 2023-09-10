@@ -1,4 +1,3 @@
-# import libraries
 import datetime
 from flask import Flask, request, jsonify
 
@@ -12,7 +11,7 @@ def info_api():
 
     # Check if required parameters are missing
     if not slack_name or not track:
-        return jsonify({"status": "error", "message": "Missing required parameters"}), 400
+        return jsonify({"status": 400, "message": "Missing required parameters"}), 400
 
     # Get current day and time in UTC
     current_day = datetime.datetime.utcnow().strftime('%A')
@@ -24,7 +23,7 @@ def info_api():
     time_difference = current_time - request_time
 
     if abs(time_difference.total_seconds()) > 120:
-        return jsonify({"status": "error", "message": "Invalid UTC time"}), 400
+        return jsonify({"status": 400, "message": "Invalid UTC time"}), 400
     
     # JSON Response
     response_data = {
@@ -32,8 +31,8 @@ def info_api():
         "current_day": current_day,
         "utc_time": utc_time,
         "track": track,
-        "github_file_url": "https://github.com/MbuviM/HNG-Internship-Backend-Development/blob/master/task0xAPI_Endpoint_Creation/API.py",
-        "github_repo_url": "https://github.com/MbuviM/HNG-Internship-Backend-Development.git",
+        "github_file_url": "https://github.com/MbuviM/HNG-Internship-Backend-Development/blob/main/task0xAPI_Endpoint_Creation/API.py",
+        "github_repo_url": "https://github.com/MbuviM/HNG-Internship-Backend-Development",
         "status_code": 200
     }
     
@@ -42,15 +41,3 @@ def info_api():
 
 if __name__ == '__main__':
     api_app.run(host='0.0.0.0', port=5000, debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
