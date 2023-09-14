@@ -5,24 +5,24 @@ base_url = 'http://localhost:5000/api'
 
 # Test CREATE operation
 def test_create():
-    response = requests.post(base_url, json={'name': 'Mark Essien'})
+    response = requests.post(base_url, json={'name': 'Yvonne Mwende'})
     print(response.json())
 
 # Test READ operation
 def test_read():
-    response = requests.get(f'{base_url}/Mark%20Essien')
+    response = requests.get(f'{base_url}/Yvonne%20Mwende')
     print(response.json())
 
 
 # Test UPDATE operation
 def test_update():
-    response = requests.put(f'{base_url}/Mark%20Essien', json={'name': 'Updated Name'})
+    response = requests.put(f'{base_url}/Yvonne%20Mwende', json={'name': 'Updated Name'})
     print(response.json())
 
 
 # Test DELETE operation
 def test_delete():
-    response = requests.delete(f'{base_url}/1')
+    response = requests.delete(f'{base_url}/Yvonne%20Mwende')
     print(response.json())
 
 # Run the tests
