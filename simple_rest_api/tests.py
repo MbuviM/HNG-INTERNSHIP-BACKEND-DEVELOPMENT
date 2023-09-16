@@ -22,7 +22,7 @@ def test_update():
 
 # Test DELETE operation
 def test_delete():
-    response = requests.delete(f'{base_url}/Yvonne%20Mwende')
+    response = requests.delete(f'{base_url}/Updated Name')
     print(response.json())
 
 # Run the tests
