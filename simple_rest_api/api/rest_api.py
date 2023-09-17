@@ -18,7 +18,9 @@ supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 supabase_key=os.getenv('SUPABASE_KEY')
 supabase_url=os.getenv('SUPABASE_URL')
 supabase = create_client(supabase_url, supabase_key)
-
+@app.route('/')
+def index():
+    return 'Hello world!'
 
 # CREATE: Adding a new person
 #all response objects from supabase dont contain a status code
