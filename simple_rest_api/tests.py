@@ -38,11 +38,8 @@ def test_update():
 
 # Test DELETE operation
 def test_delete():
-    response = requests.delete(f'{base_url}?name=eq.Yvonne Mwende')
-    if response.status_code == 200:
-        print(response.text)
-    else:
-        print(f"Error: {response.status_code}")
+    response = requests.delete(f'{base_url}/Yvonne%20Mwende')
+    print(response.json())
 
 # Run the tests
 test_create()
