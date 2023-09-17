@@ -77,4 +77,4 @@ def delete_person_by_name(name):
         return jsonify({'error': 'Failed to delete person.'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run()
