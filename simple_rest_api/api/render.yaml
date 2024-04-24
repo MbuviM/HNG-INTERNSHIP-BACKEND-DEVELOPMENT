@@ -1,8 +1,0 @@
-services:
-  - name: web
-    env:
-      - key: PORT
-        value: "5000"
-    buildCommand: pip install -r requirements.txt
-    startCommand: python rest_api.py
-
